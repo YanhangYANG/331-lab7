@@ -1,5 +1,6 @@
 package se331.lab.rest.controller;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -85,6 +86,61 @@ public class EventController {
                 .organizer("The Turtlehouse")
                 .petsAllowed(true)
                 .build());
+        eventList.add(Event.builder()
+                .id(7L)
+                .category("Animal Welfare")
+                .title("Ferret Adoption Day")
+                .description("Find your new mustelid friend at our adoption event!")
+                .location("The Ferrethouse")
+                .date("2021-08-07")
+                .time("12:00")
+                .organizer("The Ferrethouse")
+                .petsAllowed(true)
+                .build());
+        eventList.add(Event.builder()
+                .id(8L)
+                .category("Animal Welfare")
+                .title("Guinea Pig Adoption Day")
+                .description("Find your new cavy friend at our adoption event!")
+                .location("The Guinea Pighouse")
+                .date("2021-08-07")
+                .time("12:00")
+                .organizer("The Guinea Pighouse")
+                .petsAllowed(true)
+                .build());
+        eventList.add(Event.builder()
+                .id(9L)
+                .category("Animal Welfare")
+                .title("Hamster Adoption Day")
+                .description("Find your new rodent friend at our adoption event!")
+                .location("The Hamsterhouse")
+                .date("2021-08-07")
+                .time("12:00")
+                .organizer("The Hamsterhouse")
+                .petsAllowed(true)
+                .build());
+        eventList.add(Event.builder()
+                .id(10L)
+                .category("Animal Welfare")
+                .title("Mouse Adoption Day")
+                .description("Find your new rodent friend at our adoption event!")
+                .location("The Mousehouse")
+                .date("2021-08-07")
+                .time("12:00")
+                .organizer("The Mousehouse")
+                .petsAllowed(true)
+                .build());
+        eventList.add(Event.builder()
+                .id(11L)
+                .category("Animal Welfare")
+                .title("Rat Adoption Day")
+                .description("Find your new rodent friend at our adoption event!")
+                .location("The Rathouse")
+                .date("2021-08-07")
+                .time("12:00")
+                .organizer("The Rathouse")
+                .petsAllowed(true)
+                .build());
     }
 
     @GetMapping("events")
@@ -100,13 +156,15 @@ public class EventController {
         page = page == null ? 1 : page;
         Integer firstIndex = (page - 1) * perPage;
         List<Event> output = new ArrayList<>();
+        HttpHeaders responseHeader = new HttpHeaders();
+        responseHeader.set("x-total-count", String.valueOf(eventList.size()));
         try {
             for (int i = firstIndex; i < firstIndex + perPage; i++) {
                 output.add(eventList.get(i));
             }
-            return ResponseEntity.ok(output);
+            return new ResponseEntity<>(output, responseHeader, HttpStatus.OK);
         } catch (IndexOutOfBoundsException ex) {
-            return ResponseEntity.ok(output);
+            return new ResponseEntity<>(output, responseHeader, HttpStatus.OK);
         }
 
     }
