@@ -28,7 +28,7 @@ public class EventController {
                 .date("2021-08-07")
                 .time("12:00")
                 .organizer("The Cathouse")
-                .petAllowed(true)
+                .petsAllowed(true)
                 .build());
         eventList.add(Event.builder()
                 .id(2L)
@@ -39,7 +39,7 @@ public class EventController {
                 .date("2021-08-07")
                 .time("12:00")
                 .organizer("The Doghouse")
-                .petAllowed(true)
+                .petsAllowed(true)
                 .build());
         eventList.add(Event.builder()
                 .id(3L)
@@ -50,7 +50,7 @@ public class EventController {
                 .date("2021-08-07")
                 .time("12:00")
                 .organizer("The Bunnery")
-                .petAllowed(true)
+                .petsAllowed(true)
                 .build());
         eventList.add(Event.builder()
                 .id(4L)
@@ -61,7 +61,7 @@ public class EventController {
                 .date("2021-08-07")
                 .time("12:00")
                 .organizer("The Birdhouse")
-                .petAllowed(true)
+                .petsAllowed(true)
                 .build());
         eventList.add(Event.builder()
                 .id(5L)
@@ -72,7 +72,7 @@ public class EventController {
                 .date("2021-08-07")
                 .time("12:00")
                 .organizer("The Snakehouse")
-                .petAllowed(true)
+                .petsAllowed(true)
                 .build());
         eventList.add(Event.builder()
                 .id(6L)
@@ -83,7 +83,7 @@ public class EventController {
                 .date("2021-08-07")
                 .time("12:00")
                 .organizer("The Turtlehouse")
-                .petAllowed(true)
+                .petsAllowed(true)
                 .build());
     }
 
@@ -111,7 +111,7 @@ public class EventController {
 
     }
 
-    @GetMapping("event/{id}")
+    @GetMapping("events/{id}")
     public ResponseEntity<?> getEvent(@PathVariable("id") Long id) {
        Event output = null;
        for (Event event :
